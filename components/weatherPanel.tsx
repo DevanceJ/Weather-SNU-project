@@ -1,5 +1,6 @@
-import { Droplet, Wind, Compass, ThermometerIcon } from "lucide-react";
+import { Droplet, Wind, ThermometerIcon } from "lucide-react";
 import { useWeatherStore } from "@/store/useWeather";
+import { getDirection } from "@/lib/getDirection";
 
 export const WeatherPanel = () => {
   const { latestData } = useWeatherStore();
@@ -7,6 +8,7 @@ export const WeatherPanel = () => {
   const humidity = latestData.humidity;
   const windSpeed = latestData.wind_speed;
   const windDirection = latestData.wind_direction;
+  const direction = getDirection(windDirection);
 
   return (
     <div className="bg-gradient-to-br from-white to-blue-50 text-black rounded-xl shadow-md p-6">
@@ -53,15 +55,14 @@ export const WeatherPanel = () => {
           </div>
         </div>
 
-        {/* Wind Direction */}
+        {/* Wind Direction in degree and */}
         <div className="flex flex-col items-center">
           <span className="text-gray-600 font-medium">Wind Direction</span>
           <div className="flex items-center">
-            <Compass
-              className="text-purple-400 bg-purple-100 p-1 rounded-full"
-              size={28}
-            />
-            <span className="ml-2 text-lg">{windDirection}°</span>
+            <span className="text-lg">{windDirection}°</span>
+            <span className="ml-2 text-purple-400 font-semibold text-base">
+              {direction}
+            </span>
           </div>
         </div>
       </div>

@@ -1,6 +1,7 @@
 import React from "react";
-import { Droplet, Wind, Compass, ThermometerIcon } from "lucide-react";
+import { Droplet, Wind, ThermometerIcon } from "lucide-react";
 import { useGeoWeatherStore } from "@/store/useGeoWeather";
+import { getDirection } from "@/lib/getDirection";
 
 export const GeoWeatherInfo = () => {
   const { gData } = useGeoWeatherStore();
@@ -8,6 +9,7 @@ export const GeoWeatherInfo = () => {
   const humidity = gData?.main?.humidity ?? 0;
   const windSpeed = gData?.wind?.speed ?? 0;
   const windDirection = gData?.wind?.deg ?? 0;
+  const direction = getDirection(windDirection);
   return (
     <div className="bg-gradient-to-br from-white to-blue-50 text-black rounded-xl shadow-md p-6">
       <div className="flex justify-between text-center flex-col mb-2">
@@ -57,11 +59,10 @@ export const GeoWeatherInfo = () => {
         <div className="flex flex-col items-center">
           <span className="text-gray-600 font-medium">Wind Direction</span>
           <div className="flex items-center">
-            <Compass
-              className="text-purple-400 bg-purple-100 p-1 rounded-full"
-              size={28}
-            />
-            <span className="ml-2 text-lg">{windDirection}°</span>
+            <span className="text-lg">{windDirection}°</span>
+            <span className="ml-2 text-purple-400 font-semibold text-base">
+              {direction}
+            </span>
           </div>
         </div>
       </div>
