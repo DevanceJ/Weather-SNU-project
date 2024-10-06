@@ -10,7 +10,8 @@ const config: Config = {
   theme: {
     extend: {
       backgroundImage: {
-        college: "url('../public/images/bg.jpeg')",
+        // college: "url('../public/images/bg.jpeg')",
+        college: "url('../public/images/snu.webp')",
       },
       colors: {
         background: "hsl(var(--background))",
