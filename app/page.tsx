@@ -120,7 +120,7 @@ const Home = () => {
           <WeatherPanel />
           <GeoWeatherInfo />
         </div>
-        <div className="flex-grow w-full lg:w-2/3">
+        <div className="lg:flex-grow w-full lg:w-2/3">
           <Component />
         </div>
       </div>

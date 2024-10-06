@@ -50,7 +50,7 @@ export function Component() {
   return (
     <Card>
       <CardHeader className="flex flex-col items-stretch space-y-0 border-b p-0 sm:flex-row">
-        <div className="flex">
+        <div className="flex flex-wrap">
           {["temp", "feelslike", "humidity", "windspeed"].map((key) => {
             const chart = key as keyof typeof chartConfig;
             return (
@@ -77,6 +77,8 @@ export function Component() {
             margin={{
               left: 12,
               right: 12,
+              top: 20,
+              bottom: 20,
             }}>
             <CartesianGrid vertical={false} />
             <XAxis
@@ -85,6 +87,7 @@ export function Component() {
               axisLine={false}
               tickMargin={8}
               minTickGap={40}
+              interval={Math.floor(chartData.length / 10)}
               tickFormatter={(value) => {
                 const date = new Date(value);
                 return date.toLocaleDateString("en-US", {
