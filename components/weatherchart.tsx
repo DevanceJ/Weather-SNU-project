@@ -23,11 +23,15 @@ const chartConfig = {
   },
   humidity: {
     label: "Humidity",
-    color: "hsl(var(--chart-2))",
+    color: "hsl(var(--chart-1))",
   },
   windspeed: {
     label: "Wind Speed",
-    color: "hsl(var(--chart-3))",
+    color: "hsl(var(--chart-1))",
+  },
+  feelslike: {
+    label: "Feels Like",
+    color: "hsl(var(--chart-1))",
   },
 } satisfies ChartConfig;
 
@@ -38,6 +42,7 @@ export function Component() {
     temp: data.temperature,
     humidity: data.humidity,
     windspeed: data.wind_speed,
+    feelslike: data.feels_like,
   }));
   const [activeChart, setActiveChart] =
     React.useState<keyof typeof chartConfig>("temp");
@@ -46,7 +51,7 @@ export function Component() {
     <Card>
       <CardHeader className="flex flex-col items-stretch space-y-0 border-b p-0 sm:flex-row">
         <div className="flex">
-          {["temp", "humidity", "windspeed"].map((key) => {
+          {["temp", "feelslike", "humidity", "windspeed"].map((key) => {
             const chart = key as keyof typeof chartConfig;
             return (
               <button
@@ -79,7 +84,7 @@ export function Component() {
               tickLine={false}
               axisLine={false}
               tickMargin={8}
-              minTickGap={32}
+              minTickGap={40}
               tickFormatter={(value) => {
                 const date = new Date(value);
                 return date.toLocaleDateString("en-US", {
@@ -95,6 +100,8 @@ export function Component() {
                   nameKey="views"
                   labelFormatter={(value) => {
                     return new Date(value).toLocaleDateString("en-US", {
+                      hour: "numeric",
+                      minute: "numeric",
                       month: "short",
                       day: "numeric",
                       year: "numeric",

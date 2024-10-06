@@ -6,6 +6,7 @@ interface WeatherData {
   humidity: number;
   wind_speed: number;
   wind_direction: number;
+  feels_like: number;
   createdAt: string;
   updatedAt: string;
   __v: number;

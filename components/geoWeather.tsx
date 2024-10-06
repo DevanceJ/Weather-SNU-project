@@ -2,14 +2,14 @@ import React from "react";
 import { Droplet, Wind, ThermometerIcon } from "lucide-react";
 import { useGeoWeatherStore } from "@/store/useGeoWeather";
 import { getDirection } from "@/lib/getDirection";
-
 export const GeoWeatherInfo = () => {
-  const { gData } = useGeoWeatherStore();
-  const temperature = gData?.main?.temp ?? 0;
-  const humidity = gData?.main?.humidity ?? 0;
-  const windSpeed = gData?.wind?.speed ?? 0;
-  const windDirection = gData?.wind?.deg ?? 0;
-  const direction = getDirection(windDirection);
+  const { geoData } = useGeoWeatherStore();
+  const temperature = geoData.current.temp_c ?? 0;
+  const humidity = geoData.current.humidity ?? 0;
+  const windSpeed = geoData.current.wind_kph ?? 0;
+  const windDirection = geoData.current.wind_degree ?? 0;
+  const feelsLikeTemperature = geoData.current.feelslike_c ?? 0;
+  const direction = geoData.current.wind_dir ?? getDirection(windDirection);
   return (
     <div className="bg-gradient-to-br from-white to-blue-50 text-black rounded-xl shadow-md p-6">
       <div className="flex justify-between text-center flex-col mb-2">
@@ -29,6 +29,7 @@ export const GeoWeatherInfo = () => {
             <ThermometerIcon className="text-yellow-600 bg-yellow-100 p-1 rounded-full" />
             <span className="ml-2 text-lg">{temperature}°C</span>
           </div>
+          <span className="text-sm">Feels like {feelsLikeTemperature}°C</span>
         </div>
 
         {/* Wind Speed */}

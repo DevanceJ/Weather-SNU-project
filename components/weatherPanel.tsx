@@ -8,6 +8,7 @@ export const WeatherPanel = () => {
   const humidity = latestData.humidity;
   const windSpeed = latestData.wind_speed;
   const windDirection = latestData.wind_direction;
+  const feelsLikeTemperature = latestData.feels_like;
   const direction = getDirection(windDirection);
 
   return (
@@ -29,6 +30,7 @@ export const WeatherPanel = () => {
             <ThermometerIcon className="text-yellow-600 bg-yellow-100 p-1 rounded-full" />
             <span className="ml-2 text-lg">{temperature}°C</span>
           </div>
+          <span className="text-sm">Feels like {feelsLikeTemperature}°C</span>
         </div>
 
         {/* Wind Speed */}
