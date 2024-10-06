@@ -77,8 +77,6 @@ export function Component() {
             margin={{
               left: 12,
               right: 12,
-              top: 20,
-              bottom: 20,
             }}>
             <CartesianGrid vertical={false} />
             <XAxis
@@ -87,7 +85,6 @@ export function Component() {
               axisLine={false}
               tickMargin={8}
               minTickGap={40}
-              interval={Math.floor(chartData.length / 10)}
               tickFormatter={(value) => {
                 const date = new Date(value);
                 return date.toLocaleDateString("en-US", {
