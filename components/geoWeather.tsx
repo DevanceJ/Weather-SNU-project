@@ -7,7 +7,6 @@ export const GeoWeatherInfo = () => {
   const temperature = geoData.current.temp_c ?? 0;
   const humidity = geoData.current.humidity ?? 0;
   const windSpeed = geoData.current.wind_kph ?? 0;
-  const windSpeedInKmh = (windSpeed * 3.6).toFixed(2);
   const windDirection = geoData.current.wind_degree ?? 0;
   const feelsLikeTemperature = geoData.current.feelslike_c ?? 0;
   const direction = geoData.current.wind_dir ?? getDirection(windDirection);
@@ -41,7 +40,7 @@ export const GeoWeatherInfo = () => {
               className="text-blue-400 bg-blue-100 p-1 rounded-full"
               size={28}
             />
-            <span className="ml-2 text-lg">{windSpeedInKmh} km/h</span>
+            <span className="ml-2 text-lg">{windSpeed} km/h</span>
           </div>
         </div>
 
