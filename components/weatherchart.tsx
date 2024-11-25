@@ -41,7 +41,7 @@ export function Component() {
     date: data.createdAt,
     temp: data.temperature,
     humidity: data.humidity,
-    windspeed: data.wind_speed,
+    windspeed: (data.wind_speed * 3.6).toFixed(2),
     feelslike: data.feels_like,
   }));
   const [activeChart, setActiveChart] =

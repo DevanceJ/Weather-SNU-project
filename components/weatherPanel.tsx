@@ -6,7 +6,7 @@ export const WeatherPanel = () => {
   const { latestData } = useWeatherStore();
   const temperature = latestData.temperature;
   const humidity = latestData.humidity;
-  const windSpeed = latestData.wind_speed;
+  const windSpeed = (latestData.wind_speed * 3.6).toFixed(2); // Convert m/s to km/h
   const windDirection = latestData.wind_direction;
   const feelsLikeTemperature = latestData.feels_like;
   const direction = getDirection(windDirection);
